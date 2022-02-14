@@ -1,9 +1,15 @@
 import DataTypes from 'sequelize'
+import Sequelize from 'sequelize'
 
 async function getDefinitions(sequelize)
 {
-    const models = [
-        sequelize.define('User', {
+        const User = sequelize.define(
+        'User', {
+            isAdmin: {
+                type: DataTypes.BOOLEAN,
+                default: false
+            },
+
             username: {
                 type: DataTypes.STRING,
                 allowNull: false,
@@ -12,24 +18,29 @@ async function getDefinitions(sequelize)
 
             password: {
                 type: DataTypes.STRING,
-                allowNull: false
-            }
-        }),
+                allowNull: false,
+            },
+        })
 
 
-        sequelize.define('Post', {
-            postDate: {
+
+        const Post = sequelize.define(
+        'Post', {
+            postTime: {
                 type: DataTypes.DATE,
-                allowNull: false
+                allowNull: false,
+                defaultValue: Sequelize.NOW
             },
             content: {
-                type: DataTypes.TEXT,
+                type: DataTypes.STRING(140),
                 allowNull: false
             }
         })
-    ]
 
-    return models
+        //Post.belongsTo(User, { foreignKey: {allowNull: false}, onDelete: 'CASCADE' })
+        //User.hasMany(Post, {foreignKey: {allowNull: false}, onDelete: 'CASCADE'})
+        User.hasMany(Post, {foreignKey: {allowNull: false}})
+        Post.belongsTo(User)
 }
 
 

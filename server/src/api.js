@@ -8,7 +8,7 @@ class API
     static async createAPI()
     {
         const api = new API()
-        await api.initSequelize()
+        await api.initSequelize(true)
         api.initExpress()
 
         return api
@@ -47,7 +47,6 @@ class API
         this.app.listen(port, host, () => {
             console.log(`Listening ${host} on port ${port}`)
         })
-
     }
 
 }

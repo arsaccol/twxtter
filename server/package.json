@@ -11,13 +11,13 @@
   "author": "rarirurero",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1",
-    "mysql": "github:mysqljs/mysql",
-    "mysql2": "^2.2.5",
-    "sequelize": "^6.3.5"
+    "express": "^4.17.2",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.16.1"
   },
   "devDependencies": {
-    "eslint": "^7.9.0",
+    "eslint": "^8.9.0",
     "nodemon": "^2.0.4"
   }
 }

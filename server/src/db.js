@@ -30,7 +30,7 @@ async function createConnection()
         connection.on('error', (err) => {
             if(err.code == 'PROTOCOL_CONNECTION_LOST') {
                 console.log(`Database error: ${{err}}`)
-                setTimeout(10000, createConnection)
+                setTimeout(1000, createConnection)
             }
         })
 

@@ -32,7 +32,7 @@ async function getDefinitions(sequelize)
                 defaultValue: Sequelize.NOW
             },
             content: {
-                type: DataTypes.STRING(140),
+                type: DataTypes.STRING(280),
                 allowNull: false
             }
         })

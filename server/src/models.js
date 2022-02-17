@@ -40,7 +40,6 @@ async function getDefinitions(sequelize)
         //Post.belongsTo(User, { foreignKey: {allowNull: false}, onDelete: 'CASCADE' })
         //User.hasMany(Post, {foreignKey: {allowNull: false}, onDelete: 'CASCADE'})
         User.hasMany(Post, {foreignKey: {allowNull: false}})
-        Post.belongsTo(User)
 }
 
 

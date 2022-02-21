@@ -1,6 +1,5 @@
 import express from 'express'
-import db from './db.js'
-import models from './models.js'
+import models from './setup-models.js'
 
 class API
 {
@@ -8,24 +7,9 @@ class API
     static async createAPI()
     {
         const api = new API()
-        await api.initSequelize(true)
         api.initExpress()
 
         return api
-    }
-
-
-    async initSequelize(forceSync)
-    {
-        console.log(`Attempting to connect to database...`)
-        try {
-            this.sequelize = db.connectSequelize()
-            models.getDefinitions(this.sequelize)
-            await this.sequelize.sync({force: forceSync})
-        }
-        catch(err) {
-            console.log(err)
-        }
     }
 
 

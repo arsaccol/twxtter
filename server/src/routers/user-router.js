@@ -22,6 +22,26 @@ router.get('/users/', async (req, res) => {
 })
 
 
+router.get('/users/:id', async (req, res) => {
+    try {
+        const result = await User.findOne({
+            where: {
+                id: req.params.id
+            }
+        })
+
+        res.json({
+            id: result.id,
+            username: result.username,
+        })
+    }
+    catch(err) {
+        console.log(`Error retrieving user: "${err}"`)
+        res.send(500, "Error retrieving user")
+    }
+})
+
+
 router.post('/users/', async (req, res) => {
     const {username, password} = req.body
 

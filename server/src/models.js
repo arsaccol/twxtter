@@ -49,9 +49,10 @@ const Post = sequelize.define(
     }
 )
 
-//Post.belongsTo(User, { foreignKey: {allowNull: false}, onDelete: 'CASCADE' })
-//User.hasMany(Post, {foreignKey: {allowNull: false}, onDelete: 'CASCADE'})
-User.hasMany(Post, {foreignKey: {allowNull: false}})
+
+// one user to many posts
+User.hasMany(Post, {foreignKey: {allowNull: false}, onDelete: 'CASCADE'})
+Post.belongsTo(User, {foreignKey: {allowNull: false}, onDelete: 'CASCADE'})
 
 await (async () => {
     sequelize.sync()

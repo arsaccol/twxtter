@@ -4,27 +4,24 @@ import ReactDOM from 'react-dom'
 import useUserProfile from '../hooks/fetchUserProfile.js'
 
 function ProfileDisplay({userId}) {
+
+    const className = 'ProfileDisplay'
     const { username, bio, fetchStatus } = useUserProfile(userId)
 
-    if(fetchStatus === "fetching") {
-        return <h1>Loading user data...</h1>
-    }
+    const display = 
+        fetchStatus === 'fetching'?
+            (<h1>Loading user data...</h1>)
+        : fetchStatus === 'done'?
+            (<h1>{username}</h1>)
+        : fetchStatus === 'not-found'?
+            (<h1>User not found</h1>)
+        :   (<h1>Error fetching user data</h1>)
 
-    else if (fetchStatus === "done") 
-    {
-            return (
-                <div className="ProfilePage">
-                    <h1>{username}</h1>
-                </div>
-            )
-    }
-    else if(fetchStatus === "not-found")
-    {
-        return <div className="ProfilePage">
-                    <h1>No such user</h1>
-                </div>
-    }
-
+    return (
+        <div className={className}>
+            {display}
+        </div>
+    )
 }
 
 export default ProfileDisplay

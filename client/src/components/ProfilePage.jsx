@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 
 import useUserProfile from '../hooks/fetchUserProfile.js'
 
-function ProfilePage({userId}) {
+function ProfileDisplay({userId}) {
     const { username, bio, fetchStatus } = useUserProfile(userId)
 
     if(fetchStatus === "fetching") {
@@ -14,12 +14,17 @@ function ProfilePage({userId}) {
     {
             return (
                 <div className="ProfilePage">
-                    <h1>Profile Page</h1>
-                    <p>Welcome, {username}!</p>
-                    <p>User data fetch status: {fetchStatus}</p>
+                    <h1>{username}</h1>
                 </div>
             )
     }
+    else if(fetchStatus === "not-found")
+    {
+        return <div className="ProfilePage">
+                    <h1>No such user</h1>
+                </div>
+    }
+
 }
 
-export default ProfilePage
+export default ProfileDisplay

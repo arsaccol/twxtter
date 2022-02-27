@@ -1,4 +1,5 @@
 import express from 'express'
+import cors from 'cors'
 import { Router } from './setup-routers.js'
 
 class API
@@ -19,8 +20,9 @@ class API
         const host = process.env.NODE_HOST
 
         this.app = express()
+        console.log(`Client host: ${process.env.CLIENT_HOST}`)
 
-        this.app.use('/', Router)
+        this.app.use('/', cors({origin: process.env.CLIENT_HOST || 'https://localhost:8000/'}), Router)
         console.log('Routers set up!')
 
         this.app.listen(port, host, () => {

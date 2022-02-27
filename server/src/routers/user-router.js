@@ -24,16 +24,24 @@ router.get('/users/', async (req, res) => {
 
 router.get('/users/:id', async (req, res) => {
     try {
+        console.log(`Retrieving user with id: ${req.params.id}`)
         const result = await User.findOne({
             where: {
                 id: req.params.id
             }
         })
 
-        res.json({
-            id: result.id,
-            username: result.username,
-        })
+        if(result) {
+            console.log(`Found user: ${JSON.stringify(result, null, 2)}`)
+            res.json({
+                id: result.id,
+                username: result.username,
+            })
+        }
+        else {
+            console.log(`User with id: ${req.params.id} not found`)
+            res.json(null)
+        }
     }
     catch(err) {
         console.log(`Error retrieving user: "${err}"`)
@@ -50,7 +58,7 @@ router.post('/users/', async (req, res) => {
 
     if(username && password) {
         try {
-            const createdUser = await User.create({username: username, password: password, isAdmin: false})
+            const createdUser = await User.create({username: username, password: password, isAdmin: false, bio: ""})
 
             const createdId = createdUser.id
             const createdUsername = createdUser.username

@@ -77,4 +77,34 @@ router.post('/users/', async (req, res) => {
     }
 })
 
+
+router.patch('/users/:id', async (req, res) => {
+    const id = req.params.id
+    const { bio } = req.body
+
+    console.log(`Updating bio of user with id "${id}" to: ${bio}`)
+
+    //User.patch(id, {bio: bio})
+    try {
+        const [affectedNumber, affectedElements] = await User.update({bio: bio}, {where: {id: id}})
+
+        if(affectedNumber > 0) {
+            console.log(`Updated bio of user with id "${id}" to: ${bio}`)
+            res.json({id: id, bio: bio})
+        }
+        else {
+            console.log(`User with id "${id}" not found`)
+            res.json(null)
+        }
+    }
+    catch (err) {
+        console.log(`Error updating user: "${err}"`)
+        res.send(500, "Error updating user")
+    }
+
+    // for now, we're only patching the bio
+
+
+})
+
 export { router as UserRouter }

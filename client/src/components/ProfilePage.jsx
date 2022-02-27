@@ -12,7 +12,6 @@ function ProfilePage({userId}) {
 
     else if (fetchStatus === "done") 
     {
-        if(username) {
             return (
                 <div className="ProfilePage">
                     <h1>Profile Page</h1>
@@ -20,15 +19,6 @@ function ProfilePage({userId}) {
                     <p>User data fetch status: {fetchStatus}</p>
                 </div>
             )
-        }
-        else {
-            return (
-                <div className="ProfilePage">
-                    <h1>Profile Page</h1>
-                    <p>No such user.</p>
-                </div>
-            )
-        }
     }
 }
 

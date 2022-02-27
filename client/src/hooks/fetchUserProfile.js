@@ -7,9 +7,8 @@ function useUserProfile(userId) {
 
     useEffect(async () => {
         try {
-            console.log(`Requesting user profile data for user with ID: ${userId}`)
-            const userData = await axios.get(`http://localhost:3000/users/${userId}`)
-            setUserProfile({...userData, fetchStatus: "done"})
+            const user = await axios.get(`http://localhost:3000/users/${userId}`)
+            setUserProfile({...user.data, fetchStatus: "done"})
         }
         catch(err) {
             console.log(`Error fetching user: ${err}`)

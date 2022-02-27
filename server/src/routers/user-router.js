@@ -36,6 +36,7 @@ router.get('/users/:id', async (req, res) => {
             res.json({
                 id: result.id,
                 username: result.username,
+                bio: result.bio,
             })
         }
         else {

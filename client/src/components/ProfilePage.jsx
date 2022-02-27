@@ -9,13 +9,13 @@ function ProfileDisplay({userId}) {
     const { username, bio, fetchStatus } = useUserProfile(userId)
 
     const display = 
-        fetchStatus === 'fetching'?
-            (<h1>Loading user data...</h1>)
+          fetchStatus === 'fetching'?
+            <h1>Loading user data...</h1>
         : fetchStatus === 'done'?
-            (<h1>{username}</h1>)
+            <h1>{username}</h1>
         : fetchStatus === 'not-found'?
-            (<h1>User not found</h1>)
-        :   (<h1>Error fetching user data</h1>)
+            <h1>User not found</h1>
+        :   <h1>Error fetching user data</h1>
 
     return (
         <div className={className}>

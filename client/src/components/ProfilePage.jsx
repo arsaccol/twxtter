@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 import ProfileInfo from './ProfileInfo.jsx'
+import UserPosts from './UserPosts.jsx'
 
 function ProfileDisplay({userId}) {
 
@@ -10,6 +11,7 @@ function ProfileDisplay({userId}) {
     return (
         <div className={className}>
             <ProfileInfo userId={userId}></ProfileInfo>
+            <UserPosts userId={userId}></UserPosts>
         </div>
     )
 }

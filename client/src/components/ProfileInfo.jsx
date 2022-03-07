@@ -9,7 +9,7 @@ function ProfileInfo({userId}) {
     const profileInfoDisplay = (
         <div>
             <h1>{username}</h1>
-            <p>{bio}</p>
+            <p>Bio: {bio}</p>
         </div>
     )
 

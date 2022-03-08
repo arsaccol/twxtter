@@ -1,10 +1,9 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 
 import ProfileInfo from './ProfileInfo.jsx'
 import UserPosts from './UserPosts.jsx'
 
-function ProfileDisplay({userId}) {
+function UserProfile({userId}) {
 
     const className = 'ProfileDisplay'
 
@@ -16,4 +15,4 @@ function ProfileDisplay({userId}) {
     )
 }
 
-export default ProfileDisplay
+export default UserProfile

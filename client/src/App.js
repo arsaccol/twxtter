@@ -1,5 +1,5 @@
 import './App.css';
-import ProfileDisplay from './components/ProfilePage'
+import UserProfile from './components/UserProfile'
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
           Edit <code>src/App.js</code> and save to reload.
         </p>
       </header>
-      <ProfileDisplay userId={1}/>
+      <UserProfile userId={1}/>
     </div>
   );
 }

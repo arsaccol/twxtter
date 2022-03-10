@@ -12,7 +12,7 @@ function UserProfile({userId}) {
 
     console.log(`Sign-in status: ${JSON.stringify(signedIn, null, 2)} \nUser: ${JSON.stringify(user, null, 2)}`)
 
-    const className = 'ProfileDisplay'
+    const className = 'UserProfile'
 
     return (
         <div className={className}>

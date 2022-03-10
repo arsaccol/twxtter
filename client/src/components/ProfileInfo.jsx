@@ -1,6 +1,6 @@
 import React from 'react'
 
-import useUserProfile from '../hooks/fetchUserProfile.js'
+import useUserProfile from '../hooks/useUserProfile.js'
 
 function ProfileInfo({userId}) {
     const className = 'ProfileInfo'

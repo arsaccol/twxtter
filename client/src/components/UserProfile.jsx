@@ -1,14 +1,12 @@
-import React, { useContext } from 'react'
-
 import ProfileInfo from './ProfileInfo.jsx'
 import UserPosts from './UserPosts.jsx'
 
-import AuthContext from '../contexts/AuthContext.jsx'
+import useAuth from '../hooks/useAuth'
 
 
 function UserProfile({userId}) {
 
-    const {signedIn, user} = useContext(AuthContext)
+    const {signedIn, user} = useAuth()
 
     console.log(`Sign-in status: ${JSON.stringify(signedIn, null, 2)} \nUser: ${JSON.stringify(user, null, 2)}`)
 

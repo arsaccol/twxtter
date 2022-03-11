@@ -1,6 +1,6 @@
 import { createContext } from 'react'
 
-const AuthContext = createContext({signedIn: false, user: { id: 0, username: null}})
+const AuthContext = createContext({})
 
 export function AuthProvider({children}) {
 

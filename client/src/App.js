@@ -1,17 +1,20 @@
 import './App.css';
-import UserProfile from './components/UserProfile'
 import { AuthProvider } from './contexts/AuthContext'
+
+import AppRoutes from './AppRoutes';
+
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
       </header>
+
+      <nav>
+        Hello this is nav
+      </nav>
       <AuthProvider>
-        <UserProfile userId={1}/>
+        <AppRoutes></AppRoutes>
       </AuthProvider>
 
     </div>

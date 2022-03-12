@@ -22,6 +22,36 @@ router.get('/users/', async (req, res) => {
 })
 
 
+// use 'user' route rather than 'users' because I can't be bothered to 
+// come up with a regex for usernames that won't conflict with user ID lookup"
+router.get('/user/:username', async (req, res) => {
+    try {
+        console.log(`Retrieving user with username: "${req.params.username}"`)
+        const result = (await User.findOne({
+            where: {
+                username: req.params.username
+            }
+        }))
+
+        if(result) {
+            res.json({
+                id: result.id,
+                username: result.username,
+                bio: result.bio
+            })
+        }
+        else {
+            console.log(`User with id: ${req.params.id} not found`)
+            res.json(null)
+        }
+    }
+    catch(err) {
+        console.log(`Error retrieving user: "${err}"`)
+        res.send(500, "Error retrieving user")
+    }
+})
+
+
 router.get('/users/:id(\\d+)', async (req, res) => {
     try {
         console.log(`Retrieving user with id: ${req.params.id}`)

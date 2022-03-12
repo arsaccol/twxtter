@@ -22,7 +22,7 @@ router.get('/users/', async (req, res) => {
 })
 
 
-router.get('/users/:id', async (req, res) => {
+router.get('/users/:id(\\d+)', async (req, res) => {
     try {
         console.log(`Retrieving user with id: ${req.params.id}`)
         const result = await User.findOne({

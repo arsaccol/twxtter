@@ -4,7 +4,7 @@ import useUserProfile from '../hooks/useUserProfile.js'
 
 function ProfileInfo({userId}) {
     const className = 'ProfileInfo'
-    const { username, bio, fetchStatus } = useUserProfile(userId)
+    const { username, bio, fetchStatus } = useUserProfile({id: userId})
 
     const profileInfoDisplay = (
         <div>

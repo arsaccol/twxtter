@@ -26,7 +26,7 @@ function useUserProfile({ id, username }) {
         }
 
         fetchUserProfile()
-    }, [id])
+    }, [id, username])
 
     return userProfile
 }

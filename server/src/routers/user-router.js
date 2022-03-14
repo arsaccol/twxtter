@@ -53,6 +53,7 @@ router.get('/user/:username', async (req, res) => {
 
 
 router.get('/users/:id(\\d+)', async (req, res) => {
+    console.log(`Looking up user with id: "${req.params.id}"`)
     try {
         console.log(`Retrieving user with id: ${req.params.id}`)
         const result = await User.findOne({

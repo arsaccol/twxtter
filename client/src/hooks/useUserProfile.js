@@ -9,7 +9,11 @@ function useUserProfile({ id, username }) {
         async function fetchUserProfile() 
         {
             try {
-                const user = await axios.get(`http://localhost:3000/users/${id}`)
+                const apiBase = `http://localhost:3000`
+                // if username is supplied, use it rather than than ID
+                const apiUrl = username? `${apiBase}/user/${username}` : `${apiBase}/users/${id}`
+
+                const user = await axios.get(apiUrl)
                 if(user.data)
                     setUserProfile({...user.data, fetchStatus: "done"})
                 else

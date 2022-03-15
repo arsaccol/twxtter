@@ -3,7 +3,7 @@ import { Post, User } from '../models.js'
 
 const router = express.Router()
 
-router.get('/users/:id/posts/', async (req, res) => {
+router.get('/users/:id(\\d+)/posts/', async (req, res) => {
     try {
         const results = await Post.findAll({
             where: {
@@ -11,6 +11,24 @@ router.get('/users/:id/posts/', async (req, res) => {
             }
         })
         res.json(results)
+    }
+    catch(err) {
+        console.log(`Error retrieving posts: ${err}`)
+        res.send(500, "Error retrieving posts")
+    }
+})
+
+
+router.get('/user/:username/posts/', async (req, res) => {
+    try {
+        const user = await User.findOne({ where: { username: req.params.username } })
+        if(user) {
+            const posts = await Post.findAll({ where: { userId: user.id } })
+            res.json(posts)
+        }
+        else {
+            res.json([])
+        }
     }
     catch(err) {
         console.log(`Error retrieving posts: ${err}`)

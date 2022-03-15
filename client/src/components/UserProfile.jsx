@@ -8,8 +8,8 @@ function UserProfile({userId, username}) {
 
     return (
         <div className={className}>
-            <ProfileInfo userId={userId}></ProfileInfo>
-            <UserPosts userId={userId}></UserPosts>
+            <ProfileInfo userId={userId} propUsername={username}></ProfileInfo>
+            <UserPosts userId={userId} username={username}></UserPosts>
         </div>
     )
 }

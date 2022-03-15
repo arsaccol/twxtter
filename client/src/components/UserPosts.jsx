@@ -3,10 +3,12 @@ import React from 'react'
 import useUserPosts from '../hooks/useUserPosts.js'
 import TimeAgoDisplay from './TimeAgoDisplay.jsx'
 
-function UserPosts({userId}) {
+function UserPosts({username}) {
     const className = 'UserPosts'
 
-    const {posts} = useUserPosts(userId)
+    const { posts } = useUserPosts(username)
+
+    console.log(`Posts from user ${username}: ${posts}`)
 
     return (
         <div className={className}>

@@ -2,9 +2,9 @@ import React from 'react'
 
 import useUserProfile from '../hooks/useUserProfile.js'
 
-function ProfileInfo({userId}) {
+function ProfileInfo({userId, propUsername}) {
     const className = 'ProfileInfo'
-    const { username, bio, fetchStatus } = useUserProfile({id: userId})
+    const { username, bio, fetchStatus } = useUserProfile({username: propUsername})
 
     const profileInfoDisplay = (
         <div>

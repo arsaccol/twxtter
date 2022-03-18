@@ -1,6 +1,7 @@
 import express from 'express'
 import bcrypt from 'bcrypt'
 import { User } from '../models.js'
+import jwt from 'jsonwebtoken'
 
 const router = express.Router()
 
@@ -15,8 +16,9 @@ router.post('/login', async (req, res) => {
           res.status(400).send({ error: 'Invalid password' })
         }
 
-        // TODO: should return a JWT or something
-        res.json({id: user.id, username: user.username})
+        const token = jwt.sign({ id: user.id }, process.env.JWT_KEY)
+
+        res.json({id: user.id, username: user.username, token})
     }
     catch(err) {
         console.log(`Error during login of user ${username}: ${err}`)

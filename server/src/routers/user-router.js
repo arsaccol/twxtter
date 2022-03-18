@@ -1,5 +1,7 @@
 import express from 'express'
 import { User } from '../models.js'
+import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
 
 const router = express.Router()
 
@@ -23,7 +25,7 @@ router.get('/users/', async (req, res) => {
 
 
 // use 'user' route rather than 'users' because I can't be bothered to 
-// come up with a regex for usernames that won't conflict with user ID lookup"
+// come up with a regex for usernames that won't conflict with user ID lookup
 router.get('/user/:username', async (req, res) => {
     try {
         console.log(`Retrieving user with username: "${req.params.username}"`)
@@ -90,7 +92,10 @@ router.post('/users/', async (req, res) => {
 
     if(username && password) {
         try {
-            const createdUser = await User.create({username: username, password: password, isAdmin: false, bio: ""})
+
+            const passwordHash = await bcrypt.hash(password, 10)
+
+            const createdUser = await User.create({username: username, password: passwordHash, isAdmin: false, bio: ""})
 
             const createdId = createdUser.id
             const createdUsername = createdUser.username
